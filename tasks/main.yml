@@ -25,5 +25,11 @@
       - '{{ dns_ip2 }}'
     state: present
     autoconnect: yes
-  when: ip_address is defined
-  tags: nettest
+  when: ip_address is defined and not laptop
+
+- name: 'No peer DNS'
+  lineinfile:
+    path: /etc/sysconfig/network-scripts/ifcfg-{{ ansible_default_ipv4.interface }}
+    state: present
+    line: 'PEERDNS=NO'
+  when: ip_address is defined and not laptop
