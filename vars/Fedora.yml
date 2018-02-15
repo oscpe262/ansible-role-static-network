@@ -1,0 +1,10 @@
+## ansible-role-static-network/roles/vars/Fedora.yml
+# vim:ft=ansible:
+---
+nm_packages:
+  - dbus-python
+  - NetworkManager-tui
+  - glib
+  - NetworkManager-glib
+  - python-gobject
+...

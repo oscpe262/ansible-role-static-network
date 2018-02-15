@@ -1,0 +1,29 @@
+## roles/ansible-role-static-network/tasks/main.yml
+# vim:ft=ansible:
+---
+- name: Include distro specific variables
+  include_vars: '{{ item }}'
+  with_first_found:
+    - '{{ ansible_distribution }}.yml'
+    - '{{ ansible_os_family }}.yml'
+
+- name: Install network packages
+  package:
+    name: '{{ item }}'
+    state: present
+  with_flattened: '{{ nm_packages }}'
+
+- name: Set static IP
+  nmcli:
+    conn_name: '{{ ansible_default_ipv4.interface }}'
+    ifname: '{{ ansible_default_ipv4.interface }}'
+    type: ethernet
+    ip4: '{{ ip_address }}'
+    gw4: '{{ gw_ip }}'
+    dns4:
+      - '{{ dns_ip1 }}'
+      - '{{ dns_ip2 }}'
+    state: present
+    autoconnect: yes
+  when: ip_address is defined
+  tags: nettest

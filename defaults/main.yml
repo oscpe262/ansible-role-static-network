@@ -1,0 +1,7 @@
+## roles/ansible-role-static-network/defaults/main.yml
+# vim:ft=ansible:
+---
+gw_ip: '192.168.0.1'
+dns_ip1: '8.8.8.8'
+dns_ip2: '8.8.6.6'
+...
