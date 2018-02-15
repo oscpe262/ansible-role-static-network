@@ -26,6 +26,7 @@
     state: present
     autoconnect: yes
   when: ip_address is defined and not laptop
+  ignore_errors: yes
 
 - name: 'No peer DNS'
   lineinfile:
