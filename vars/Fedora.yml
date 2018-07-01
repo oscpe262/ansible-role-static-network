@@ -1,5 +1,5 @@
 ## ansible-role-static-network/roles/vars/Fedora.yml
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 nm_packages:
   - dbus-python

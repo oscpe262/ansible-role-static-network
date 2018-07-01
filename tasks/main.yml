@@ -1,5 +1,5 @@
 ## roles/ansible-role-static-network/tasks/main.yml
-# vim:ft=ansible:
+# vim:ft=yaml.ansible:
 ---
 - name: Include distro specific variables
   include_vars: '{{ item }}'
